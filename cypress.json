@@ -2,8 +2,6 @@
   "baseUrl": "http://localhost:9000",
   "component": {
     "testFiles": "**/*.test.{js,ts,jsx,tsx}",
-    "componentFolder": "src",
-    "viewportHeight": 500,
-    "viewportWidth": 700
+    "componentFolder": "src"
   }
 }

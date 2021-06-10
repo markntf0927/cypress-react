@@ -1,47 +1,114 @@
 import React from 'react'
 import { mount } from '@cypress/react'
 import '../styles/main.scss'
+import { loremIpsum } from 'lorem-ipsum'
 
 import Todo from '../components/Todo'
-import TodoList from '../components/Todo/TodoList'
 
+const getRandomNum = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min)
+}
 
-describe('Tests <Todo/>', () => {
+describe('Mounts <Todo/>', () => {
   beforeEach(() => {
-    mount(
-      <Todo />
-    )
+    mount(<Todo />)
   })
 
-  it('renders Section', ()=> {
+  it('Renders Section', () => {
     cy.get('h5').contains('Todo Section')
   })
 
-  it('default todo is empty []', ()=> {
+  it('Checks default todo is empty []', () => {
     cy.get('h5').contains('Todo Section')
 
     cy.get('.todo').should('have.length', 0)
   })
 
-  it('adds a todo', ()=> {
-    cy.log('**adding a todo**')
+  it('Checks todo value if it exists', () => {
+    cy.get('button.show-btn').click()
+    cy.get('div.todo__input').click()
+    cy.get('button.add-btn').click()
 
+    cy.log('** should show error message & blocks to add todo **')
+
+    cy.get('p.small.error').should('have.length', 1)
+
+    const input = loremIpsum()
+
+    cy.get('input.todo-input').type(input).should('have.value', input)
+
+    cy.log('** clicks back button **')
+
+    cy.get('button.back-btn').click()
+
+    cy.log('** should hide error message **')
+
+    cy.get('p.small.error').should('have.length', 0)
+
+    cy.get('button.show-btn').click()
+
+    cy.get('input.todo-input').should('have.value', '')
   })
-
-
-  it('contains the correct number of todos', () => {
-    const todos = [
-      { id: 1, content: 'Buy milk' },
-      { id: 2, content: 'Learn Component Testing' }
-    ]
-
-    mount(<TodoList todo={todos} />)
-
-    cy.get('.todo').should('have.length', todos.length)
-  })
-
-
 })
 
+describe('Blocks empty todo', () => {
+  beforeEach(() => {
+    mount(<Todo />)
+  })
 
+  it('Blocks new todo with empty value', () => {
+    cy.get('button.show-btn').click()
+    cy.get('div.todo__input').click()
+    cy.get('button.add-btn').click()
 
+    cy.log('** should show error message & blocks to add todo **')
+
+    cy.get('p.small.error').should('have.length', 1)
+  })
+
+  it('Blocks new todo with empty value & go back', () => {
+    cy.get('button.show-btn').click()
+    cy.get('div.todo__input').click()
+    cy.get('button.add-btn').click()
+
+    cy.log('** should show error message & blocks to add todo **')
+
+    cy.get('p.small.error').should('have.length', 1)
+
+    cy.log('** clicks back button **')
+
+    cy.get('button.back-btn').click()
+
+    cy.log('** should hide error message **')
+
+    cy.get('p.small.error').should('have.length', 0)
+  })
+})
+
+describe('Adds todos', () => {
+  beforeEach(() => {
+    mount(<Todo />)
+  })
+
+  it('Adds number of todos', () => {
+    const MIN = 10
+    const MAX = 20
+
+    const randomNum = getRandomNum(MIN, MAX)
+
+    cy.log(`** should have ${randomNum} todos in total **`)
+
+    for (let idx = 0; idx < randomNum; idx++) {
+      cy.get('button.show-btn').click()
+      cy.get('div.todo__input').click()
+
+      const input = loremIpsum()
+
+      cy.get('input.todo-input').type(input).should('have.value', input)
+
+      cy.get('button.add-btn').click()
+
+      cy.get('.todo').should('have.length', idx + 1)
+    }
+  })
+})

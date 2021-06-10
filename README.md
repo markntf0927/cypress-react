@@ -15,11 +15,11 @@ yarn add cypress @cypress/react @cypress/webpack-dev-server --dev
 {
   # set baseUrl
   "baseUrl": "http://localhost:9000",
-  "component": {
-    # you can edit **/*.[FILENAME_YOU_TRACK].
-    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
-    "componentFolder": "src"
-  }
+  # point cypress folder path under src/
+  "integrationFolder": "src/cypress/integration",
+  "fixturesFolder": "src/cypress/fixtures",
+  "supportFile": "src/cypress/support/index.js",
+  "pluginsFile": "src/cypress/plugins/index.js"
 }
 ```
 
@@ -47,7 +47,7 @@ In the project directory, you can run:
 ### `yarn cypress:open`
 Runs Cypress with visual views in browser
 
-### `yarn cypress`
+### `yarn cypress:run`
 Runs Cypress in shell
 
 ### `yarn start`

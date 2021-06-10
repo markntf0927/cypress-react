@@ -33,6 +33,7 @@ function Todo() {
 
   const handleShowTodoInput = () => {
     setError(false)
+    setNewTodo(defaultNewTodo)
 
     setTodoInput(!showTodoInput)
   }
@@ -50,27 +51,16 @@ function Todo() {
 
       <TodoList todo={todo} removeTodo={removeTodo} />
 
-      {/* {todo.length > 0 &&
-        todo.map((itm, idx) => (
-          <div className="todo" key={idx}>
-            <p className="small">Todo #{itm.id}</p>
-            <div className="todo__inner">
-              <p className="todo__content small">Content: {itm.content}</p>
-            </div>
-            <button onClick={() => removeTodo(itm.id)}>Remove</button>
-          </div>
-        ))} */}
-
       {!showTodoInput && (
-        <button onClick={handleShowTodoInput}>Add a todo</button>
+        <button className="show-btn" onClick={handleShowTodoInput}>Add a todo</button>
       )}
 
       {showTodoInput && (
         <>
-          <div>
-            <input value={newTodo} onChange={handleNewTodo} />
-            <button onClick={addTodo}>Add</button>
-            <button onClick={handleShowTodoInput}>Back</button>
+          <div className="todo__input">
+            <input type="text" className="todo-input" value={newTodo} onChange={handleNewTodo} />
+            <button className="add-btn" onClick={addTodo}>Add</button>
+            <button className="back-btn" onClick={handleShowTodoInput}>Back</button>
           </div>
 
           {error && <p className="small error">Please fill your todo</p>}

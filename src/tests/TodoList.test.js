@@ -11,10 +11,6 @@ const getRandomNum = (min, max) => {
 }
 
 describe('Tests <Todo/>', () => {
-  beforeEach(() => {
-    mount(<TodoList />)
-  })
-
   it('Contains the correct number of todos', () => {
     //* randomly generates number of todos
     const MIN = 10
