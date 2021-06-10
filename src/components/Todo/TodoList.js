@@ -7,11 +7,11 @@ function TodoList({ todo, removeTodo }) {
         todo.length > 0 &&
         todo.map((itm, idx) => (
           <div className="todo" key={idx}>
-            <p className="small">Todo #{itm.id}</p>
+            <p className="todo__id small">Todo #{itm.id}</p>
             <div className="todo__inner">
               <p className="todo__content small">Content: {itm.content}</p>
             </div>
-            <button onClick={() => removeTodo(itm.id)}>Remove</button>
+            <button data-cy-id={itm.id} className="remove-btn" onClick={() => removeTodo(itm.id)}>Remove</button>
           </div>
         ))}
     </>

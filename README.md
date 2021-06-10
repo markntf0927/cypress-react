@@ -15,11 +15,11 @@ yarn add cypress @cypress/react @cypress/webpack-dev-server --dev
 {
   # set baseUrl
   "baseUrl": "http://localhost:9000",
-  # point cypress folder path under src/
-  "integrationFolder": "src/cypress/integration",
-  "fixturesFolder": "src/cypress/fixtures",
-  "supportFile": "src/cypress/support/index.js",
-  "pluginsFile": "src/cypress/plugins/index.js"
+  # set test files folder & file extension
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  }
 }
 ```
 
@@ -37,7 +37,6 @@ module.exports = (on, config) => {
 ```
 
 [Read more](https://www.cypress.io/blog/2021/04/06/cypress-component-testing-react/)
-
 
 
 ## Available Scripts

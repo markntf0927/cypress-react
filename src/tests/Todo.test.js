@@ -4,6 +4,7 @@ import '../styles/main.scss'
 import { loremIpsum } from 'lorem-ipsum'
 
 import Todo from '../components/Todo'
+import TodoList from '../components/Todo/TodoList'
 
 const getRandomNum = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min)
@@ -26,7 +27,6 @@ describe('Mounts <Todo/>', () => {
 
   it('Checks todo value if it exists', () => {
     cy.get('button.show-btn').click()
-    cy.get('div.todo__input').click()
     cy.get('button.add-btn').click()
 
     cy.log('** should show error message & blocks to add todo **')
@@ -58,7 +58,6 @@ describe('Blocks empty todo', () => {
 
   it('Blocks new todo with empty value', () => {
     cy.get('button.show-btn').click()
-    cy.get('div.todo__input').click()
     cy.get('button.add-btn').click()
 
     cy.log('** should show error message & blocks to add todo **')
@@ -68,7 +67,6 @@ describe('Blocks empty todo', () => {
 
   it('Blocks new todo with empty value & go back', () => {
     cy.get('button.show-btn').click()
-    cy.get('div.todo__input').click()
     cy.get('button.add-btn').click()
 
     cy.log('** should show error message & blocks to add todo **')
@@ -91,8 +89,8 @@ describe('Adds todos', () => {
   })
 
   it('Adds number of todos', () => {
-    const MIN = 10
-    const MAX = 20
+    const MIN = 5
+    const MAX = 10
 
     const randomNum = getRandomNum(MIN, MAX)
 
@@ -100,7 +98,6 @@ describe('Adds todos', () => {
 
     for (let idx = 0; idx < randomNum; idx++) {
       cy.get('button.show-btn').click()
-      cy.get('div.todo__input').click()
 
       const input = loremIpsum()
 
@@ -110,5 +107,42 @@ describe('Adds todos', () => {
 
       cy.get('.todo').should('have.length', idx + 1)
     }
+  })
+})
+
+describe('Removes todo', () => {
+  beforeEach(() => {
+    mount(<Todo />)
+  })
+
+  it('Removes the correct number of todos', () => {
+    const MIN = 5
+    const MAX = 10
+
+    const randomNum = getRandomNum(MIN, MAX)
+
+    cy.log(`** should have ${randomNum} todos in total **`)
+
+    for (let idx = 0; idx < randomNum; idx++) {
+      cy.get('button.show-btn').click()
+
+      const input = loremIpsum()
+
+      cy.get('input.todo-input').type(input).should('have.value', input)
+
+      cy.get('button.add-btn').click()
+
+      cy.get('.todo').should('have.length', idx + 1)
+    }
+
+
+
+    cy.get(`[data-cy-id=${randomNum - 1}]`).click()
+
+    cy.log(`** should remove todo id: ${randomNum - 1} **`)
+
+    cy.get(`[data-cy-id=${randomNum - 2}]`).click()
+
+    cy.log(`** should remove todo id: ${randomNum - 2} **`)
   })
 })
