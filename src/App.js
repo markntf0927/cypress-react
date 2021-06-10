@@ -1,34 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 import './styles/main.scss'
 
-import logo from './assets/img/logo.svg'
-
-import Todo from './components/Todo'
-import Toggle from './components/Toggle'
+import Home from './pages/Home'
+import Items from './pages/Items'
+import Login from './pages/Login'
+import NotFound from './pages/NotFound'
 
 function App() {
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Todo />
-
-        <Toggle />
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/items" component={Items} />
+        <Route exact path="/login" component={Login} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Router>
   )
 }
 

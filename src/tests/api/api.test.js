@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Tests api calls', () => {
   it('Tests GET Request', () => {
     const resProperty = ['userId', 'id', 'title', 'completed']

@@ -1,4 +1,5 @@
 import React, { useState, memo } from 'react'
+import { Button } from 'react-bootstrap'
 
 import TodoList from './TodoList'
 
@@ -52,15 +53,15 @@ function Todo() {
       <TodoList todo={todo} removeTodo={removeTodo} />
 
       {!showTodoInput && (
-        <button className="show-btn" onClick={handleShowTodoInput}>Add a todo</button>
+        <Button className="show-btn" onClick={handleShowTodoInput}>Add a todo</Button>
       )}
 
       {showTodoInput && (
         <>
           <div className="todo__input">
             <input type="text" className="todo-input" value={newTodo} onChange={handleNewTodo} />
-            <button className="add-btn" onClick={addTodo}>Add</button>
-            <button className="back-btn" onClick={handleShowTodoInput}>Back</button>
+            <Button className="add-btn" onClick={addTodo}>Add</Button>
+            <Button className="back-btn" onClick={handleShowTodoInput}>Back</Button>
           </div>
 
           {error && <p className="small error">Please fill your todo</p>}

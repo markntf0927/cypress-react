@@ -1,4 +1,5 @@
 import React, { useState, memo } from 'react'
+import { Button } from 'react-bootstrap'
 
 function Toggle() {
   const [toggle, setToggle] = useState(false)
@@ -9,9 +10,9 @@ function Toggle() {
 
   return (
     <section>
-      <button className="toggle-btn" onClick={handleToggle}>
+      <Button className="toggle-btn" onClick={handleToggle}>
         Toggle here to change state
-      </button>
+      </Button>
 
       <div className="toggle-status">
         {`Current <Toggle> state is: ${toggle}`}

@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { Button } from 'react-bootstrap'
 
 function TodoList({ todo, removeTodo }) {
   return (
@@ -11,7 +12,7 @@ function TodoList({ todo, removeTodo }) {
             <div className="todo__inner">
               <p className="todo__content small">Content: {itm.content}</p>
             </div>
-            <button data-cy-id={itm.id} className="remove-btn" onClick={() => removeTodo(itm.id)}>Remove</button>
+            <Button data-cy-id={itm.id} className="remove-btn" onClick={() => removeTodo(itm.id)}>Remove</Button>
           </div>
         ))}
     </>

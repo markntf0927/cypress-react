@@ -1,10 +1,11 @@
+/// <reference types="cypress" />
+
 import React from 'react'
 import { mount } from '@cypress/react'
-import '../styles/main.scss'
 import { loremIpsum } from 'lorem-ipsum'
 
-import Todo from '../components/Todo'
-import TodoList from '../components/Todo/TodoList'
+import '../../styles/main.scss'
+import Todo from '../../components/Todo'
 
 const getRandomNum = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min)
