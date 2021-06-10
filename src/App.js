@@ -1,23 +1,19 @@
-import React, { useState } from 'react'
-import './styles/main.scss';
+import React from 'react'
+import './styles/main.scss'
 
 import logo from './assets/img/logo.svg'
 
-function App() {
-  const [toggle, setToggle] = useState(false)
+import Todo from './components/Todo'
+import Toggle from './components/Toggle'
 
-  const handleToggle = () => {
-    setToggle(!toggle)
-  }
+function App() {
 
   return (
     <div className="App">
       <header className="App-header">
-        <button className="toggle-btn" onClick={handleToggle}>Toggle here to change state</button>
+        <Todo />
 
-        <div className="toggle-status">
-          {`Current <Toggle> state is: ${toggle}`}
-        </div>
+        <Toggle />
 
         <img src={logo} className="App-logo" alt="logo" />
         <p>

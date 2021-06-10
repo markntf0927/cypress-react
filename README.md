@@ -45,16 +45,10 @@ module.exports = (on, config) => {
 In the project directory, you can run:
 
 ### `yarn cypress:open`
-Runs Cypress in Create React App
+Runs Cypress with visual views in browser
 
-**Issue may be occurred:**
-
-1. time out for opening the app due to verification
--> Run below command to fix it
-
-```bash
-npx cypress verify
-```
+### `yarn cypress`
+Runs Cypress in shell
 
 ### `yarn start`
 
