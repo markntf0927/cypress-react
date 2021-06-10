@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+import { isLoggedIn } from './services/auth'
 
 import './styles/main.scss'
 
@@ -9,13 +15,14 @@ import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 
 function App() {
-
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/items" component={Items} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login">
+          {isLoggedIn ? <Redirect to="/" /> : <Login />}
+        </Route>
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
