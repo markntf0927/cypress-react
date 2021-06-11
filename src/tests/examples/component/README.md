@@ -7,37 +7,23 @@
   (not recommended to use ***class***, it may be changed in DOM)
 
 
-2. Mock function with Axios
+2. Mock a component
 
-- use ```cy.stub()``` to mock function with axios that used in component
+- use ```cy.stub()``` to mock a dummy component to test
 
   ``` bash
   #example
 
-  # require axios Class
-  const Axios = require('axios')
+  # import <Child /> compoent to mock a component
 
-  # apply Axios & set method name to mock axios method
+  import * as Child from './child'
 
-  # .resolves() -> fill mock data
+  cy.stub(Child, 'default').callsFake(MockChild)
 
-  # .as() -> give a nickname to the function for further use in unit test
+  # 'default' -> this option is to get all stuff from original component
 
-  const data = [
-    {...},
-    {...},
-  ]
+  # .callsFake() -> method to mock component
 
-  # will override original fetch function 
-  cy.stub(Axios, 'get').resolves({ data }).as('get')
-
-  # mount component
-  mount(<Posts />)
-
-  # check returned data from mock axios request
-  cy.get(post).should('have.length', 2)
-
-  # mock axios function called
-  cy.get('@get').should('have.been.called')
+  # MockChild -> apply your dummy component to test
 
   ```

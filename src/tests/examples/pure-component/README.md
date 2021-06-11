@@ -1,4 +1,4 @@
-# Stateless Component Unit Test
+# Pure Component Unit Test
 
 1. Element Identifier
 
@@ -6,20 +6,9 @@
 
   (not recommended to use ***class***, it may be changed in DOM)
 
-2. Event Listener
 
-- use ```cy.stub()``` to mock functions that used in component
+### test cases
 
-  ``` bash
-  #example
-  
-  const stub = cy.stub().as('handleClick')
+1. passes a text as children
 
-  # .as() -> give a nickname to the function for further use in unit test
-
-  it('alerts with click message', () => {
-    cy.get('[data-cy="stateless-btn"]').click()
-    cy.get('@handleClick').should('have.been.calledOnce')
-  })
-
-  ```
+2. passes Button component as children & invokes child component function
