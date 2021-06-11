@@ -31,7 +31,9 @@ describe('Renders <Todo/>', () => {
 
     cy.log(`** should have ${randomNum} todos **`)
 
-    mount(<TodoList todo={todos} />)
+    const stub = cy.stub().as('removeTodo')
+
+    mount(<TodoList todo={todos} removeTodo={stub} />)
 
     cy.get('.todo').should('have.length', todos.length)
   })
