@@ -4,7 +4,9 @@ import React from 'react'
 import { mount } from '@cypress/react'
 import { loremIpsum } from 'lorem-ipsum'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../styles/main.scss'
+
 import Todo from '../../components/Todo'
 
 const getRandomNum = (min, max) => {
@@ -136,14 +138,11 @@ describe('Removes todo', () => {
       cy.get('.todo').should('have.length', idx + 1)
     }
 
+    for (let idx = 0; idx < randomNum; idx++) {
+      cy.get(`[data-cy-id=${idx + 1}]`).click()
+      cy.log(`** should remove todo id: ${idx + 1} **`)
 
-
-    cy.get(`[data-cy-id=${randomNum - 1}]`).click()
-
-    cy.log(`** should remove todo id: ${randomNum - 1} **`)
-
-    cy.get(`[data-cy-id=${randomNum - 2}]`).click()
-
-    cy.log(`** should remove todo id: ${randomNum - 2} **`)
+      cy.get('.todo').should('have.length', randomNum - (idx + 1))
+    }
   })
 })

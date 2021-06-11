@@ -4,8 +4,5 @@
     "testFiles": "**/*.test.{js,ts,jsx,tsx}",
     "componentFolder": "src"
   },
-  "experimentalStudio": true,
-  "env": {
-    "coverage": true
-  }
+  "experimentalStudio": true
 }

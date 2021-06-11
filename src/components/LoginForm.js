@@ -16,6 +16,7 @@ function LoginForm() {
 
   const [formData, setFormData] = useState(defaultFormData)
   const [isLoading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target
@@ -42,8 +43,13 @@ function LoginForm() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
 
-    if (!handleInputCheck()) return console.log('invalid input')
+    if (!handleInputCheck()) {
+      console.log('invalid input')
+      setError(true)
+      return
+    }
 
+    setError(false)
     setLoading(true)
 
     console.log('api calls with', formData)
@@ -113,9 +119,16 @@ function LoginForm() {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        <Button
+          variant="primary"
+          data-cy="submit"
+          type="submit"
+          onClick={handleSubmit}
+        >
           {isLoading ? 'Submitting...' : 'Submit'}
         </Button>
+
+        {error && <div data-cy="error" className="p error">Please fill in all inputs</div>}
       </Form>
     </Container>
   )

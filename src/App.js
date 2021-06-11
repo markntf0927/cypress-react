@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import { isLoggedIn } from './services/auth'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.scss'
 
 import Home from './pages/Home'
