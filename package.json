@@ -8,7 +8,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open-ct",
-    "cypress:run": "cypress run-ct"
+    "cypress:run": "cypress run-ct",
+    "cypress:run:test": "cypress run-ct --spec src/tests/Toggle.test.js",
+    "cypress:test": "start-server-and-test 'start' 9000 'cypress:run:test'"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -34,7 +36,8 @@
     "chance": "^1.1.7",
     "cypress": "^7.5.0",
     "eslint-plugin-cypress": "^2.11.3",
-    "lorem-ipsum": "^2.0.3"
+    "lorem-ipsum": "^2.0.3",
+    "start-server-and-test": "^1.12.5"
   },
   "eslintConfig": {
     "extends": [

@@ -1,8 +1,11 @@
 {
+  "experimentalStudio": true,
   "baseUrl": "http://localhost:9000",
   "component": {
-    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "testFiles": [
+      "**/*.test.{js,ts,jsx,tsx}", 
+      "**/*.spec.{js,ts,jsx,tsx}"
+    ],
     "componentFolder": "src"
-  },
-  "experimentalStudio": true
+  }
 }
