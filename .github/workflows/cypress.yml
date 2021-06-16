@@ -1,6 +1,6 @@
-# CI/CD for cypress
+# CI/CD with Cypress
 
-name: Run Cypress Test
+name: CI
 
 # Controls when the action will run. 
 on: 
@@ -12,18 +12,15 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs: 
-  test:
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 🛎️
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
 
       # Install npm packages
       - name: Install 🔧
