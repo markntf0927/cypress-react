@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -17,7 +17,7 @@ import NotFound from './pages/NotFound'
 
 function App() {
   return (
-    <Router>
+    <Router basename={"/"}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/items" component={Items} />
