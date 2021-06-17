@@ -1,5 +1,4 @@
-# CI/CD with Cypress
-
+# pipeline name [optional]
 name: Build
 
 # Controls when the action will run. 
