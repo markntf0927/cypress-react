@@ -69,4 +69,4 @@ jobs:
 
       # Deploy on S3
       - name: Deploy with S3 🏗️
-        run: aws s3 sync ./build/ s3://soymilk/build
+        run: aws s3 sync ./build/ s3://soymilk
