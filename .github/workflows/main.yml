@@ -1,5 +1,5 @@
 # pipeline name [optional]
-name: Build
+name: CI/CD
 
 # Controls when the action will run. 
 on: 
@@ -49,14 +49,23 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
 
-      # Install npm packages
-      - name: Install packages 🔧
+      # Install npm dependencies
+      - name: Install dependencies 🔧
         run: yarn install
       
-      # Run cypress test
+      # Run Cypress test
       - name: Run Cypress test 🚨
         run: yarn cypress:run:test
 
-      # Build after
-      - name: Build 🏗️
-        run: yarn build
+      # Build
+      - name: Deploy with GitHub Pages 🏗️
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          yarn deploy:gh_pages
+        env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
