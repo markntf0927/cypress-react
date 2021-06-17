@@ -2,14 +2,16 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mikeliuu.github.io/cypress-react",
   "scripts": {
     "start": "PORT=9000 react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "deploy:gh_pages": "gh-pages -d build",
     "cypress:open": "cypress open-ct",
     "cypress:run": "cypress run-ct",
-    "cypress:run:test": "cypress run-ct --spec src/tests/Todo/**/*"
+    "cypress:run:test": "cypress run-ct --spec src/tests/examples/api/**/*"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -35,6 +37,7 @@
     "chance": "^1.1.7",
     "cypress": "^7.5.0",
     "eslint-plugin-cypress": "^2.11.3",
+    "gh-pages": "^3.2.1",
     "lorem-ipsum": "^2.0.3",
     "start-server-and-test": "^1.12.5"
   },
