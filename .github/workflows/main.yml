@@ -13,13 +13,13 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs: 
-  build:
+  test:
     # The type of runner that the job will run on
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
         os:
-          - ubuntu-latest
+          - [ubuntu-latest, windows-latest, macOS-latest]
         node-version:
           - '14.17.0'
 
@@ -42,8 +42,8 @@ jobs:
       
       # Run cypress test
       - name: Run Cypress test 🚨
-        run: yarn cypress:test
+        run: yarn cypress:run:test
 
-      # Build after tested
+      # Build after
       - name: Build 🏗️
         run: yarn build
