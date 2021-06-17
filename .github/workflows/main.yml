@@ -56,8 +56,12 @@ jobs:
       # Run Cypress test
       - name: Run Cypress test 🚨
         run: yarn cypress:run:test
-
+      
       # Build
+      - name: Build 🏗️
+        run: yarn build
+
+      # Deploy
       - name: Deploy with GitHub Pages 🏗️
         run: |
           git config --global user.name $user_name
