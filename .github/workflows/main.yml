@@ -22,7 +22,7 @@ jobs:
         os:
           - ubuntu-latest
         node-version:
-          - 14.17.0
+          - '14.17.0'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,7 +33,7 @@ jobs:
 
       # install node for yarn
       - name: setup node ${{matrix.node-version}} 🔧
-        uses: actions/setup-node@v1.4.1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{matrix.node-version}}
 
