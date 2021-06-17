@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/cypress-react/static/css/main.d82ded27.chunk.css",
-    "main.js": "/cypress-react/static/js/main.fcb3c5a0.chunk.js",
-    "main.js.map": "/cypress-react/static/js/main.fcb3c5a0.chunk.js.map",
+    "main.js": "/cypress-react/static/js/main.a9fc8a95.chunk.js",
+    "main.js.map": "/cypress-react/static/js/main.a9fc8a95.chunk.js.map",
     "runtime-main.js": "/cypress-react/static/js/runtime-main.5a3362d8.js",
     "runtime-main.js.map": "/cypress-react/static/js/runtime-main.5a3362d8.js.map",
     "static/css/2.150d169a.chunk.css": "/cypress-react/static/css/2.150d169a.chunk.css",
-    "static/js/2.cb606362.chunk.js": "/cypress-react/static/js/2.cb606362.chunk.js",
-    "static/js/2.cb606362.chunk.js.map": "/cypress-react/static/js/2.cb606362.chunk.js.map",
+    "static/js/2.c0fd62e7.chunk.js": "/cypress-react/static/js/2.c0fd62e7.chunk.js",
+    "static/js/2.c0fd62e7.chunk.js.map": "/cypress-react/static/js/2.c0fd62e7.chunk.js.map",
     "static/js/3.977e0631.chunk.js": "/cypress-react/static/js/3.977e0631.chunk.js",
     "static/js/3.977e0631.chunk.js.map": "/cypress-react/static/js/3.977e0631.chunk.js.map",
     "index.html": "/cypress-react/index.html",
     "static/css/2.150d169a.chunk.css.map": "/cypress-react/static/css/2.150d169a.chunk.css.map",
     "static/css/main.d82ded27.chunk.css.map": "/cypress-react/static/css/main.d82ded27.chunk.css.map",
-    "static/js/2.cb606362.chunk.js.LICENSE.txt": "/cypress-react/static/js/2.cb606362.chunk.js.LICENSE.txt"
+    "static/js/2.c0fd62e7.chunk.js.LICENSE.txt": "/cypress-react/static/js/2.c0fd62e7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5a3362d8.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.cb606362.chunk.js",
+    "static/js/2.c0fd62e7.chunk.js",
     "static/css/main.d82ded27.chunk.css",
-    "static/js/main.fcb3c5a0.chunk.js"
+    "static/js/main.a9fc8a95.chunk.js"
   ]
 }
