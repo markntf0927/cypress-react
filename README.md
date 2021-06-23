@@ -138,3 +138,16 @@ Runs Cypress with visual views in browser
 
 ### `yarn cypress:run`
 Runs Cypress in shell
+
+## Remarks
+- for running end-to-end test in shell, you need **start-server-and-test** to start server fro testing
+
+``` bash
+# example
+
+"scripts": {
+  "start": "react-scripts start",
+  "cypress:run:e2e": "start-server-and-test 'start' 3000 'cypress run --spec cypress/integration/test/**/*'"
+}
+
+```
