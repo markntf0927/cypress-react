@@ -1,113 +1,136 @@
-# Getting Started with Create React App
+# Cypress Test with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+  1. jQuery-like way to write a test
+  2. built-in assertion libraries (mocha, jest)
+  3. automatically snapshot (images & videos) when got errors
 
-## Running Cypress in Create React App
-1. Install Cypress-related packages
-``` bash
-yarn add cypress @cypress/react @cypress/webpack-dev-server --dev
-```
+## Common api
+  - cy.contains()
+  - cy.get()
+  - cy.contains()
+  - .should()
 
-2. Create *cypress.json*
-``` bash
-# cypress.json
+## Best Practice
+  - recommand to use data attribute to get element [Read more](https://docs.cypress.io/guides/references/best-practices)
+  - recommand to use *.should()* instead of *expect()*
 
-{
-  # set baseUrl
-  "baseUrl": "http://localhost:9000",
-  # set test files folder & file extension
-  "component": {
-    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
-    "componentFolder": "src"
-  }
-}
-```
+## Test Types
+### 1. Unit Test (Component Test)
 
-3. Update *cypress/plugins/index.js* for running in the app with Webpack Dev Server
+  - Install Cypress-related packages
+      ``` bash
+      yarn add cypress @cypress/react @cypress/webpack-dev-server @cypress/instrument-cra --dev
+      ```
 
-``` bash
-# cypress/plugins/index.js
+  - Create *cypress.json*
+      ``` bash
+      # cypress.json
 
-const injectDevServer = require("@cypress/react/plugins/react-scripts")
+      {
+        # set baseUrl
+        "baseUrl": "http://localhost:9000",
+        # set test files folder & file extension
+        "component": {
+          "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+          "componentFolder": "src"
+        }
+      }
+      ```
 
-module.exports = (on, config) => {
-  injectDevServer(on, config)
-  return config
-}
-```
+  - Update *cypress/plugins/index.js* for running in the app with Webpack Dev Server
+      ``` bash
+      # cypress/plugins/index.js
 
-[Read more](https://www.cypress.io/blog/2021/04/06/cypress-component-testing-react/)
+      const injectDevServer = require("@cypress/react/plugins/react-scripts")
+
+      module.exports = (on, config) => {
+        injectDevServer(on, config)
+        return config
+      }
+      ```
+
+    [Read more](https://www.cypress.io/blog/2021/04/06/cypress-component-testing-react/) about Cypress Unit Test with React.
+
+### 2. End-to-End Test
+  - Install Cypress-related packages
+    ``` bash
+    yarn add cypress --dev
+    ```
+
+- Create *cypress.json*
+    ``` bash
+    # cypress.json
+
+    {
+      # set baseUrl
+      "baseUrl": "http://localhost:9000",
+    }
+    ```
 
 
-## Available Scripts
+## Limitation (between end-to-end & unit test)
+### 1. File location
+    ``` bash
+    end-to-end test: 
+    
+    - file must be named like xxx.spec.js
+    - file locates in /cypress/integration
 
-In the project directory, you can run:
+    ====
+
+    unit test: 
+
+    - file naming convention is changable like:
+      xxx.spec.js OR xxx.test.js
+    
+    - file can locate anywhere
+
+    [Remark: as long as you config setting in cypress.json]
+    ```
+
+### 2. Command script
+    ``` bash
+    end-to-end test: 
+    
+    - run test with browser
+    $ yarn cypress open
+
+    - run test in shell
+    $ yarn cypress run
+
+    ====
+
+    unit test: 
+
+    - run test with browser
+    $ yarn cypress open-ct
+
+    - run test in shell
+    $ yarn cypress run-ct
+    ```
+
+  Click [here](https://docs.cypress.io/guides/guides/command-line#How-to-run-commands) to read more guides for cypress commands.
+
+### 3. api
+    ``` bash
+    end-to-end test: 
+    
+    - cannot mount component in the test
+    
+    - can use cy.visit() to direct page
+
+    ====
+
+    unit test: 
+
+    - cannot use cy.visit() with component test
+    ```
+
+## Scripts
 
 ### `yarn cypress:open`
 Runs Cypress with visual views in browser
 
 ### `yarn cypress:run`
 Runs Cypress in shell
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
