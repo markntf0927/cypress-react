@@ -49,7 +49,7 @@ jobs:
 
       # Install npm dependencies
       - name: Install dependencies 🔧
-        run: yarn install
+        run: yarn
       
       # Run Cypress test
       - name: Run Cypress test 🚨

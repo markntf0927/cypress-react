@@ -4,14 +4,16 @@
   "private": true,
   "homepage": "https://mikeliuu.github.io/cypress-react",
   "scripts": {
-    "start": "PORT=9000 react-scripts -r @cypress/instrument-cra start",
+    "start": "react-scripts start",
+    "start:unit": "PORT=9000 react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy:gh_pages": "gh-pages -d build",
     "cypress:open": "cypress open-ct",
     "cypress:run": "cypress run-ct",
-    "cypress:run:test": "cypress run-ct --spec src/tests/examples/api/**/*"
+    "cypress:run:test": "cypress run-ct --spec src/tests/examples/api/**/*",
+    "cypress:run:e2e": "start-server-and-test 'start' 3000 'cypress run --spec cypress/integration/test/**/*'"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

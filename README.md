@@ -125,6 +125,10 @@
     unit test: 
 
     - cannot use cy.visit() with component test
+    - use *mount* to render component
+
+    import { mount } from '@cypress/react'
+
     ```
 
 ## Scripts
