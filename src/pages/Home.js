@@ -4,7 +4,7 @@ import { Row, Col } from "antd"
 import Layout from "../components/shared/Layout"
 import Toggle from "../components/Toggle"
 import Content from "../components/shared/Content"
-import Table from "../components/Table"
+import ListTable from "../components/ListTable"
 
 // import Stack from '../utils/stack'
 
@@ -28,7 +28,7 @@ function Home() {
 
         <input onChange={handleTextChange} />
 
-        <Table />
+        <ListTable />
 
         <Row>
           <Col span={24}>col</Col>
